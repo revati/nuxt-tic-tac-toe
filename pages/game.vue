@@ -34,7 +34,6 @@ export default {
       this.$store.dispatch('game/makeMove', {x, y, player: this.activePlayer})
     },
     isInWinningLine (xCoord, yCoord) {
-      console.log(!!this.winningLine.find(({x, y}) => x === xCoord && y === yCoord))
       return !!this.winningLine.find(({x, y}) => x === xCoord && y === yCoord)
     }
   }

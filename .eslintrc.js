@@ -11,6 +11,8 @@ module.exports = {
     'html'
   ],
   // add your custom rules here
-  rules: {},
+  rules: {
+    "curly": 1
+  },
   globals: {}
 }

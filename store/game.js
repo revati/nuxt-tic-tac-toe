@@ -21,31 +21,28 @@ let boardIsFull = board => {
 }
 
 let cellValue = board => ({x, y}) => board[x][y]
+let findWinningCoords = board => winnerCoords.find(isWinner(board))
 
-let findWinningCoords = board => {
+let isWinner = board => coords => {
   let value = cellValue(board)
 
-  let winnerCoords = [
-    [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}],
-    [{x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}],
-    [{x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}],
-
-    [{x: 0, y: 0}, {x: 0, y: 1}, {x: 0, y: 2}],
-    [{x: 1, y: 0}, {x: 1, y: 1}, {x: 1, y: 2}],
-    [{x: 2, y: 0}, {x: 2, y: 1}, {x: 2, y: 2}],
-
-    [{x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 2}],
-    [{x: 2, y: 0}, {x: 1, y: 1}, {x: 0, y: 2}]
-  ]
-
-  return winnerCoords.find(coords => {
-    return value(coords[0]) !== null
-      &&
-      value(coords[0]) === value(coords[1])
-      &&
-      value(coords[1]) === value(coords[2])
-  })
+  return value(coords[0]) !== null &&
+    value(coords[0]) === value(coords[1]) &&
+    value(coords[1]) === value(coords[2])
 }
+
+const winnerCoords = [
+  [{x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}],
+  [{x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}],
+  [{x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}],
+
+  [{x: 0, y: 0}, {x: 0, y: 1}, {x: 0, y: 2}],
+  [{x: 1, y: 0}, {x: 1, y: 1}, {x: 1, y: 2}],
+  [{x: 2, y: 0}, {x: 2, y: 1}, {x: 2, y: 2}],
+
+  [{x: 0, y: 0}, {x: 1, y: 1}, {x: 2, y: 2}],
+  [{x: 2, y: 0}, {x: 1, y: 1}, {x: 0, y: 2}]
+]
 
 export const actions = {
   makeMove ({commit, state}, {x, y, player}) {
