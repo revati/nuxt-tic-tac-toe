@@ -5,7 +5,9 @@
   "author": "Roberts Gulans <rgulans@gmail.com>",
   "private": true,
   "dependencies": {
-    "nuxt": "latest"
+    "muse-ui": "^2.0.2",
+    "nuxt": "latest",
+    "vue-material": "^0.7.1"
   },
   "scripts": {
     "dev": "nuxt",
